@@ -1,9 +1,15 @@
  --SIMPLE STATICS SAVING by Pikey, May 2019
-  
+ *UPDATED DEC 2019* 
+ 
  -- Usage of this script should credit the following contributors:
  --Pikey 
  --Speed & Grimes for their work on Serialising tables, included below,
  --FlightControl for MOOSE (Required)
+ 
+ Use SGSDestroy.lua only unless you experience any errors relating to destroyed scenery. Ignore SGS.lua otherwise.
+ LOAD MOOSE (at mission start)
+ LOAD SGSDestroy before nearly every other type of script due to it altering the landscape.
+ 
  
  --INTENDED USAGE
  --DCS Server Admins looking to do long term multi session play that will need a server reboot in between and they wish to keep the Ground 
