@@ -1,10 +1,14 @@
- --SIMPLE STATICS SAVING by Pikey, May 2019
+ --SIMPLE STATICS SAVING by Pikey, January 2020
   
  -- Usage of this script should credit the following contributors:
  --Pikey 
  --Speed & Grimes for their work on Serialising tables, included below,
  --FlightControl for MOOSE (Required)
  
+--change log
+--1.2 - due to two bugs with statics, I cannot get coordinates of farps and oil rigs but also destory() does not work on the same two, 
+--thus deleting the lines is a new change with only the effect of removing errors. No possibilities remains to fix ED's bug here.
+
  --INTENDED USAGE
  --DCS Server Admins looking to do long term multi session play that will need a server reboot in between and they wish to keep the Ground 
  --Unit positions true from one reload to the next.
@@ -26,11 +30,11 @@
 --I experienced issues Spawning Statics and Destroying statics in some configurations, so I'm exploding them and not deleting them like SGS. 
 
   --Configurable for user:
- SaveScheduleStatics=10 --how many seconds between each check of all the statics.
+ SaveScheduleStatics=30 --how many seconds between each check of all the statics.
  -----------------------------------
  --Do not edit below here
  -----------------------------------
- local version = "1.1"
+ local version = "1.2"
  
  function IntegratedbasicSerialize(s)
     if s == nil then
@@ -120,10 +124,7 @@ if file_exists("SaveStatics.lua") then
 
   AllStatics:ForEach(function (stat)
   if SaveStatics[stat:GetName()]["dead"]==true then
-    local coord = stat:GetCoordinate()
-    stat:Destroy()
-    coord:Explosion(200) --just a little black mark
-    rngsmokes(coord)
+      stat:Destroy()
   end
 
   end)
